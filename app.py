@@ -589,7 +589,7 @@ st.markdown("""
   .hero-description { margin: 6px 0 16px; }
 
   /* 5) Slightly smaller image so row height is smaller */
-  .hero-image { width: 260px; height: 330px; }             /* was 400x400 */
+  .hero-image { width: 220px; height: 300px; }             /* was 400x400 */
 </style>
 """, unsafe_allow_html=True)
 
@@ -917,5 +917,6 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
+
 
 st.markdown('</div>', unsafe_allow_html=True)
