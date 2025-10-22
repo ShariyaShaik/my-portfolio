@@ -5,7 +5,7 @@ from datetime import datetime
 # Page Configuration
 st.set_page_config(
     page_title="Shaik Shariya | AI/ML Portfolio",
-    page_icon="💼",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -15,7 +15,6 @@ st.markdown("""
 <style>
     /* Import Google Fonts */
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-    
     /* Global Styles */
     * {
         font-family: 'Inter', sans-serif;
@@ -52,25 +51,28 @@ st.markdown("""
     }
     
     .nav-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .nav-logo {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #00d4ff;
-        letter-spacing: 1px;
-    }
-    
-    .nav-links {
-        display: flex;
-        gap: 40px;
-        align-items: center;
-    }
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #00d4ff;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    margin-left: auto;   /* pushes nav links to the right */
+    align-items: center;
+}
+
     
     .nav-link {
         color: #e0e0e0;
@@ -90,7 +92,7 @@ st.markdown("""
     
     /* Main Content Spacing */
     .main-content {
-        margin-top: 100px;
+        margin-top: 10px;
         padding: 0 50px;
     }
     
@@ -104,12 +106,46 @@ st.markdown("""
     /* Hero Section */
     .hero-section {
         min-height: 90vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        padding: 100px 20px;
+    }
+    
+    .hero-image-container {
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
-        text-align: center;
-        padding: 100px 20px;
+    }
+    
+    .hero-image {
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid #00d4ff;
+        box-shadow: 0 20px 60px rgba(0, 212, 255, 0.4);
+        transition: all 0.3s ease;
+    }
+    
+    .hero-image:hover {
+        transform: scale(1.05);
+        box-shadow: 0 25px 80px rgba(0, 212, 255, 0.6);
+    }
+    
+    .hero-content {
+        text-align: left;
+    }
+    
+    @media (max-width: 968px) {
+        .hero-section {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+        .hero-content {
+            text-align: center;
+        }
     }
     
     .hero-title {
@@ -424,10 +460,13 @@ st.markdown("""
         padding: 4px 12px;
         border-radius: 4px;
         font-size: 0.9rem;
-        font-weight: 600;
+        font-weight: 600; 
         margin-top: 5px;
     }
-    
+    .main .block-container { padding-top: 0px; }
+    .main-content { margin-top: 0px; }
+    .hero-section { padding: 10px 16px; }
+
     /* Achievements */
     .achievement-item {
         background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%);
@@ -488,47 +527,104 @@ function scrollToSection(sectionId) {
         window.scrollTo({top: y, behavior: 'smooth'});
     }
 }
+
 </script>
+
 """, unsafe_allow_html=True)
 
 # Navigation Bar
+st.markdown("""
+<style>
+/* Reduce page top padding */
+.main .block-container { padding-top: 0rem; }
+
+/* Slim header */
+.header-wrap { padding: 6px 0; margin: 0 0 6px 0; }
+
+/* Tight typography */
+.header-title { font-size: 24px; line-height: 1.1; margin: 0; }
+.header-subtitle { font-size: 14px; line-height: 1.2; margin: 2px 0 0 0; }
+
+/* Headings default margin trim */
+h1, h2, h3 { margin-top: 0.4rem; margin-bottom: 0.4rem; }
+</style>
+""", unsafe_allow_html=True)
+
+
 st.markdown("""
 <div class="nav-bar">
     <div class="nav-container">
         <div class="nav-logo">SHAIK SHARIYA</div>
         <div class="nav-links">
-            <a class="nav-link" href="#about" onclick="scrollToSection('about'); return false;">About</a>
-            <a class="nav-link" href="#education" onclick="scrollToSection('education'); return false;">Education</a>
-            <a class="nav-link" href="#experience" onclick="scrollToSection('experience'); return false;">Experience</a>
-            <a class="nav-link" href="#projects" onclick="scrollToSection('projects'); return false;">Projects</a>
-            <a class="nav-link" href="#skills" onclick="scrollToSection('skills'); return false;">Skills</a>
-            <a class="nav-link" href="#certifications" onclick="scrollToSection('certifications'); return false;">Certifications</a>
-            <a class="nav-link" href="#contact" onclick="scrollToSection('contact'); return false;">Contact</a>
+            <a class="nav-link" style="text-decoration:none;color:pink;" href="#about" onclick="scrollToSection('about'); return false;">About</a>
+            <a class="nav-link" style="text-decoration:none;color:pink;" href="#education" onclick="scrollToSection('education'); return false;">Education</a>
+            <a class="nav-link" style="text-decoration:none;color:pink;" href="#experience" onclick="scrollToSection('experience'); return false;">Experience</a>
+            <a class="nav-link" style="text-decoration:none;color:pink;" href="#projects" onclick="scrollToSection('projects'); return false;">Projects</a>
+            <a class="nav-link" style="text-decoration:none;color:pink;" href="#skills" onclick="scrollToSection('skills'); return false;">Skills</a>
+            <a class="nav-link" style="text-decoration:none;color:pink;" href="#certifications" onclick="scrollToSection('certifications'); return false;">Certifications</a>
+            <a class="nav-link" style="text-decoration:none;color:pink;" href="#contact" onclick="scrollToSection('contact'); return false;">Contact</a>
         </div>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
-# Main Content Container
-st.markdown('<div class="main-content">', unsafe_allow_html=True)
-
-# About Section (Hero)
-st.markdown('<div id="about" class="section hero-section">', unsafe_allow_html=True)
 st.markdown("""
-    <h1 class="hero-title">Shaik Shariya</h1>
-    <p class="hero-subtitle">AI/ML Engineer | Full Stack Developer | Problem Solver</p>
-    <p class="hero-description">
-        Final-year Computer Science Engineering student specializing in Artificial Intelligence and Machine Learning. 
-        Passionate about building intelligent systems and creating impactful solutions through code.
-    </p>
-    <div class="cta-container">
-        <a href="#contact" onclick="scrollToSection('contact'); return false;" class="cta-button cta-button-primary">Get In Touch</a>
-        <a href="https://github.com/shaikshariya2825" target="_blank" class="cta-button">View GitHub</a>
-        <a href="https://linkedin.com/in/shaikshariya2825" target="_blank" class="cta-button">LinkedIn Profile</a>
-    </div>
+<style>
+  /* 1) Make nav a bit shorter */
+  .nav-bar { padding: 12px 32px; }         /* was 20px 50px */
+
+  /* 2) Remove extra offset under fixed nav */
+  .main-content { margin-top: 0px; }      /* was 100px; adjust to your nav height */
+
+  /* 3) Make hero section compact */
+  .hero-section { 
+    min-height: auto;                      /* was 90vh */
+    padding: 10px 16px;                    /* was 100px 20px */
+    gap: 36px;                             /* was 60px */
+  }
+
+  /* 4) Tighten headline block */
+  .hero-title { font-size: 3.2rem; margin-bottom: 8px; }   /* was 5rem and 20px */
+  .hero-subtitle { font-size: 1.2rem; margin-bottom: 8px; }
+  .hero-description { margin: 6px 0 16px; }
+
+  /* 5) Slightly smaller image so row height is smaller */
+  .hero-image { width: 20px; height: 25px; }             /* was 400x400 */
+</style>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+<div id="about" class="main-content">
+  <section class="hero-section">
+    <div class="hero-image-container">
+      <img src="https://raw.githubusercontent.com/ShariyaShaik/portfolio/refs/heads/main/my_photo.png" class="zoom-image"alt="Shaik Shariya" class="hero-image">
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title">Shaik Shariya</h1>
+      <p class="hero-subtitle">Software Engineer | Problem Solver | Full Stack Developer</p>
+      <p class="hero-description">
+        Final-year Computer Science Engineering student (AIML specialization) with hands-on experience in Java,
+        python programming and database-driven applications. Skilled in Data Structures and Algorithms, debugging and testing with a keen interest
+        in software engineering. Recognized for strong problem-solving, teamwork, and adaptability while
+        contributing to engineering projects.
+      </p>
+    </div>
+    
+  </section>
+</div>
+""", unsafe_allow_html=True)
+
+
 # Stats
+
+st.markdown("<br><br><br>", unsafe_allow_html=True)
+st.markdown("""<div style="align:center" class="cta-container" style="justify-content: flex-start;">
+        <a style="text-decoration:none" href="#contact" onclick="scrollToSection('contact'); return false;" class="cta-button">Get In Touch</a>
+        <a style="text-decoration:none" href="https://drive.google.com/file/d/1fIFsWWEp7RFNmpUcVpPkSmyk8lvAfGad/view?usp=drive_link" target="_blank" class="cta-button">Check Out My Resume</a>
+        <a style="text-decoration:none" href="https://github.com/ShariyaShaik" target="_blank" class="cta-button">View GitHub</a>
+        <a style="text-decoration:none" href="https://www.linkedin.com/in/shariya-shaik-13677a268/" target="_blank" class="cta-button">LinkedIn Profile</a>
+      </div>""",unsafe_allow_html=True)
+st.markdown("<br>",unsafe_allow_html=True)
 col1, col2, col3, col4 = st.columns(4)
 with col1:
     st.markdown("""
@@ -540,39 +636,36 @@ with col1:
 
 with col2:
     st.markdown("""
-    <div class="stat-card">
+    <a style="text-decoration:none" href="https://leetcode.com/u/Shariya123/"><div class="stat-card">
         <div class="stat-number">230+</div>
         <div class="stat-label">LeetCode Problems</div>
-    </div>
+    </div></a>
     """, unsafe_allow_html=True)
 
 with col3:
     st.markdown("""
-    <div class="stat-card">
-        <div class="stat-number">5+</div>
-        <div class="stat-label">Certifications</div>
-    </div>
+    <a style="text-decoration:none" href="#certifications" onclick="scrollToSection('certifications'); return false;">
+        <div class="stat-card">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">Certifications</div>
+        </div>
+    </a>
     """, unsafe_allow_html=True)
 
 with col4:
     st.markdown("""
+    <a style="text-decoration:none" href="https://www.hackerrank.com/profile/shaikshariya2825">
     <div class="stat-card">
-        <div class="stat-number">Top 4.28%</div>
-        <div class="stat-label">AP Entrance Rank</div>
+        <div class="stat-number"style="font-size: 2rem;">Hackerrank</div>
+        <div class="stat-label">5★ in Python</div>
+        <div class="stat-label">4★ in Java</div>
+        <div class="stat-label">4★ in SQL</div>
     </div>
+    </a>
     """, unsafe_allow_html=True)
 
-st.markdown('</div>', unsafe_allow_html=True)
 
-# Footer
-st.markdown("""
-<div class="footer">
-    <p style="font-size: 1.05rem; margin-bottom: 10px;">Built with Streamlit and Python</p>
-    <p style="font-size: 0.95rem;">© 2025 Shaik Shariya. All rights reserved.</p>
-</div>
-""", unsafe_allow_html=True)
 
-st.markdown('</div>', unsafe_allow_html=True)
 
 # Education Section
 st.markdown('<div id="education" class="section">', unsafe_allow_html=True)
@@ -586,14 +679,36 @@ st.markdown("""
         CGPA: 9.74/10
     </p>
 </div>
+<div class="content-card">
+    <h3 class="card-title">Intermediate in MPC</h3>
+    <p class="card-subtitle">Sri Chaitanya Junior College, Tirupati</p>
+    <p class="card-date">2020 - 2022</p>
+    <p class="card-description" style="color: #00d4ff; font-size: 1.3rem; font-weight: 700; margin-top: 15px;">
+        Marks: 978/1000
+    </p>
+</div>
 """, unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
+
 
 # Professional Experience Section
 st.markdown('<div id="experience" class="section">', unsafe_allow_html=True)
-st.markdown('<h2 class="section-heading">Professional Experience</h2>', unsafe_allow_html=True)
+st.markdown('<h2 class="section-heading">Experience</h2>', unsafe_allow_html=True)
 
 st.markdown("""
+<div class="content-card">
+    <h3 class="card-title">Java Full Stack Developer Intern</h3>
+    <p class="card-subtitle">NETWORX</p>
+    <p class="card-date">June 2025 - August 2025</p>
+    <div class="card-description">
+        <ul>
+            <li>Developed Banking System Simulator using Java (OOP + DSA) and Spring Boot</li>
+            <li>Integrated JDBC and SQLite3 for efficient data storage and manipulation</li>
+            <li>Designed front-end interface using HTML and CSS</li>
+            <li>Enhanced skills in JDBC and database handling</li>
+        </ul>
+        <a href="https://drive.google.com/file/d/10xDFC4LgZH4aTTQg5HHcfw4j_qIY08aV/view?usp=sharing" target="_blank" style="color: #00d4ff; text-decoration: none; font-weight: 600; margin-top: 10px; display: inline-block;">View Certificate →</a>
+    </div>
+</div>
 <div class="content-card">
     <h3 class="card-title">AIML Intern</h3>
     <p class="card-subtitle">AICTE (Eduskills)</p>
@@ -604,25 +719,13 @@ st.markdown("""
             <li>Experimented with ML models and learned model training based on specific requirements</li>
             <li>Enhanced skills in model evaluation, data pre-processing, and deployment strategies</li>
         </ul>
+        <a href="https://drive.google.com/file/d/1lB2__47Lx96UpDOvDrf6YZe2f0FUegX_/view" target="_blank" style="color: #00d4ff; text-decoration: none; font-weight: 600; margin-top: 10px; display: inline-block;">View Certificate →</a>
     </div>
 </div>
 
-<div class="content-card">
-    <h3 class="card-title">Java Full Stack Developer Intern</h3>
-    <p class="card-subtitle">NETWORX</p>
-    <p class="card-date">June 2025 - August 2025</p>
-    <div class="card-description">
-        <ul>
-            <li>Developed Banking System Simulator using Java (OOP + DSA) and Spring Boot</li>
-            <li>Integrated JDBC and SQLite3 for efficient data storage and manipulation</li>
-            <li>Designed front-end interface using HTML and CSS</li>
-            <li>Enhanced skills in JDBC, Spring Boot, and database handling</li>
-        </ul>
-        <a href="https://github.com" target="_blank" style="color: #00d4ff; text-decoration: none; font-weight: 600; margin-top: 10px; display: inline-block;">View on GitHub →</a>
-    </div>
-</div>
+
 """, unsafe_allow_html=True)
-st.markdown('</div>', unsafe_allow_html=True)
+
 
 # Projects Section
 st.markdown('<div id="projects" class="section">', unsafe_allow_html=True)
@@ -632,6 +735,27 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.markdown("""
+    <div class="content-card">
+        <h3 class="card-title">Banking System Simulator</h3>
+        <p class="card-description">
+            Comprehensive banking application built with Java, Spring Boot, and database integration for managing financial operations.
+        </p>
+        <p style="color: #e0e0e0; font-weight: 600; margin: 20px 0 10px 0;">Key Features:</p>
+        <ul>
+            <li>Object-oriented programming with Java (OOP + DSA)</li>
+            <li>JDBC and SQLite3 integration for data persistence</li>
+            <li>Clean and responsive front-end using HTML and CSS</li>
+            <li>Complete banking operations management</li>
+        </ul>
+        <div style="margin-top: 20px;">
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">Spring Boot</span>
+            <span class="skill-tag">JDBC</span>
+            <span class="skill-tag">SQLite3</span>
+        </div>
+        <a href="https://github.com/ShariyaShaik/Banking-system" target="_blank" style="color: #00d4ff; text-decoration: none; font-weight: 600; margin-top: 15px; display: inline-block;">View on GitHub →</a>
+    </div>
+    
     <div class="content-card">
         <h3 class="card-title">Educational Organization - ServiceNow</h3>
         <p class="card-description">
@@ -648,8 +772,12 @@ with col1:
             <span class="skill-tag">Flow Designer</span>
             <span class="skill-tag">Business Rules</span>
         </div>
+        <a href="" target="_blank" style="color: #00d4ff; text-decoration: none; font-weight: 600; margin-top: 15px; display: inline-block;">In Progress</a>
     </div>
-    
+    """, unsafe_allow_html=True)
+
+with col2:
+    st.markdown("""
     <div class="content-card">
         <h3 class="card-title">Electricity Bill Management System</h3>
         <p class="card-description">
@@ -666,12 +794,9 @@ with col1:
             <span class="skill-tag">Virtual Agent</span>
             <span class="skill-tag">Integration</span>
         </div>
-        <a href="https://linkedin.com" target="_blank" style="color: #00d4ff; text-decoration: none; font-weight: 600; margin-top: 15px; display: inline-block;">View Details →</a>
+        <a href="https://www.linkedin.com/posts/shariya-shaik-13677a268_servicenow-virtualagent-automation-activity-7370366782080999424-40di?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEGcDzoBwJGtScFFKVwyEfzazxRp9b-3ffA" target="_blank" style="color: #00d4ff; text-decoration: none; font-weight: 600; margin-top: 15px; display: inline-block;">View on LinkedIn →</a>
     </div>
-    """, unsafe_allow_html=True)
-
-with col2:
-    st.markdown("""
+    
     <div class="content-card">
         <h3 class="card-title">Fantasy Cricket Application</h3>
         <p class="card-description">
@@ -689,11 +814,10 @@ with col2:
             <span class="skill-tag">Qt Designer</span>
             <span class="skill-tag">SQL</span>
         </div>
-        <a href="https://linkedin.com" target="_blank" style="color: #00d4ff; text-decoration: none; font-weight: 600; margin-top: 15px; display: inline-block;">View on LinkedIn →</a>
+        <a href="https://www.linkedin.com/posts/shariya-shaik-13677a268_excited-to-share-my-latest-project-a-fantasy-activity-7211810547988668416-audU?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEGcDzoBwJGtScFFKVwyEfzazxRp9b-3ffA" target="_blank" style="color: #00d4ff; text-decoration: none; font-weight: 600; margin-top: 15px; display: inline-block;">View on LinkedIn →</a>
     </div>
     """, unsafe_allow_html=True)
 
-st.markdown('</div>', unsafe_allow_html=True)
 
 # Skills Section
 st.markdown('<div id="skills" class="section">', unsafe_allow_html=True)
@@ -701,14 +825,14 @@ st.markdown('<h2 class="section-heading">Technical Skills</h2>', unsafe_allow_ht
 
 skills_data = {
     "Programming Languages": ["Python", "Java", "SQL", "DSA"],
-    "Frameworks": ["Spring", "Spring Boot", "Qt Designer", "JDBC"],
-    "Web Technologies": ["HTML", "HTML5", "CSS", "CSS3", "JavaScript"],
+    "Frameworks": ["Qt Designer", "JDBC"],
+    "Web Technologies": ["HTML", "CSS", "JavaScript"],
     "Databases": ["MySQL", "SQLite3"],
-    "Tools & Technologies": ["VS Code", "Google Colab", "Jupyter Notebook", "Replit"],
     "ServiceNow": ["System Administration", "Application Development", "Incident Management", 
                    "Problem Management", "Change Management", "Service Catalog", 
                    "User and Role Management", "Access Control", "Business Rules", 
-                   "UI Policies", "Client Scripts"]
+                   "UI Policies", "Client Scripts"],
+    "Tools & Technologies": ["VS Code", "Google Colab", "Jupyter Notebook", "Replit", "Servicenow"]  
 }
 
 cols = st.columns(2)
@@ -750,32 +874,24 @@ st.markdown('<div id="certifications" class="section">', unsafe_allow_html=True)
 st.markdown('<h2 class="section-heading">Certifications</h2>', unsafe_allow_html=True)
 
 certifications = [
-    ("Certified System Administrator - ServiceNow", "2025"),
-    ("Certified Application Developer - ServiceNow", "2025"),
-    ("Programming, Data Structures and Algorithms using Python - NPTEL", "2024"),
-    ("Google AI Essentials - Google, Coursera", "2024")
+    ("Certified System Administrator - ServiceNow", "2025", "https://drive.google.com/file/d/19dzrKbxLPYuuutpk4JHwcxnSbND_kd4u/view?usp=drive_link"),
+    ("Certified Application Developer - ServiceNow", "2025", "https://drive.google.com/file/d/1v6VWEnQ97pgYowZoVpFquzEdPtGctu4X/view?usp=drive_link"),
+    ("Programming, Data Structures and Algorithms using Python - NPTEL", "2024", "https://archive.nptel.ac.in/content/noc/NOC24/SEM1/Ecertificates/106/noc24-cs45/Course/NPTEL24CS45S64250053230164497.pdf"),
+    ("Google AI Essentials - Google, Coursera", "2024", "https://www.coursera.org/account/accomplishments/verify/WSAJV9GWAGNA"),
+    ("Java (Basic) Certificate - HackerRank", "2025", "https://www.hackerrank.com/certificates/afa9a9f6a485"),
+    ("Python (Basic) Certificate - HackerRank", "2025", "https://www.hackerrank.com/certificates/54665ee9596d"),
+    ("SQL (Basic) Certificate - HackerRank", "2025", "https://www.hackerrank.com/certificates/0d4c4ae63d0a")
 ]
 
-for cert, year in certifications:
+for cert, year, link in certifications:
     st.markdown(f"""
     <div class="cert-item">
         <div class="cert-name">{cert}</div>
         <span class="cert-year">{year}</span>
+        <a href="{link}" target="_blank" style="color: #00d4ff; text-decoration: none; font-weight: 600; margin-left: 15px; display: inline-block;">View Certificate →</a>
     </div>
     """, unsafe_allow_html=True)
 
-st.markdown('<h3 style="color: #00d4ff; font-size: 2rem; margin-top: 60px; margin-bottom: 30px; text-align: center;">Achievements</h3>', unsafe_allow_html=True)
-
-st.markdown("""
-<div class="achievement-item">
-    Completed 230+ LeetCode problems in less than a month
-</div>
-<div class="achievement-item">
-    Achieved Top 4.28% rank in AP Engineering Entrance Exam
-</div>
-""", unsafe_allow_html=True)
-
-st.markdown('</div>', unsafe_allow_html=True)
 
 # Contact Section
 st.markdown('<div id="contact" class="section">', unsafe_allow_html=True)
@@ -788,16 +904,24 @@ st.markdown("""
             I'm always open to discussing new opportunities, collaborations, or just having a chat about technology!
         </p>
         <div class="contact-links">
-            <a href="mailto:shaikshariya2825@gmail.com" class="contact-link">Email</a>
-            <a href="tel:+917660896768" class="contact-link">Phone</a>
-            <a href="https://linkedin.com/in/shaikshariya2825" target="_blank" class="contact-link">LinkedIn</a>
-            <a href="https://github.com/shaikshariya2825" target="_blank" class="contact-link">GitHub</a>
-            <a href="https://hackerrank.com/shaikshariya2825" target="_blank" class="contact-link">HackerRank</a>
+            <a style="text-decoration:none" href="mailto:shaikshariya2825@gmail.com" class="contact-link">Email</a>
+            <a style="text-decoration:none" href="tel:+917660896768" class="contact-link">Phone</a>
+            <a style="text-decoration:none" href="https://www.linkedin.com/in/shariya-shaik-13677a268/" target="_blank" class="contact-link">LinkedIn</a>
+            <a style="text-decoration:none" href="https://github.com/ShariyaShaik" target="_blank" class="contact-link">GitHub</a>
+            <a style="text-decoration:none" href="https://hackerrank.com/shaikshariya2825" target="_blank" class="contact-link">HackerRank</a>
         </div>
         <p style="color: #808080; font-size: 1.05rem; margin-top: 30px;">
-            Based in Tirupati, Andhra Pradesh, India
+            Resident in Tirupati, Andhra Pradesh, India
         </p>
     </div>
 </div>
 """, unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
+
+
+st.markdown('</div>', unsafe_allow_html=True)
+
+
+
+
+
