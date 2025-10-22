@@ -597,7 +597,7 @@ st.markdown("""
 <div id="about" class="main-content">
   <section class="hero-section">
     <div class="hero-image-container">
-      <img src="https://raw.githubusercontent.com/ShariyaShaik/portfolio/refs/heads/main/my_photo.png" alt="Shaik Shariya" class="hero-image">
+      <img src="https://raw.githubusercontent.com/ShariyaShaik/portfolio/refs/heads/main/my_photo.png" class="zoom-image"alt="Shaik Shariya" class="hero-image">
     </div>
     <div class="hero-content">
       <h1 class="hero-title">Shaik Shariya</h1>
@@ -878,9 +878,9 @@ certifications = [
     ("Certified Application Developer - ServiceNow", "2025", "https://drive.google.com/file/d/1v6VWEnQ97pgYowZoVpFquzEdPtGctu4X/view?usp=drive_link"),
     ("Programming, Data Structures and Algorithms using Python - NPTEL", "2024", "https://archive.nptel.ac.in/content/noc/NOC24/SEM1/Ecertificates/106/noc24-cs45/Course/NPTEL24CS45S64250053230164497.pdf"),
     ("Google AI Essentials - Google, Coursera", "2024", "https://www.coursera.org/account/accomplishments/verify/WSAJV9GWAGNA"),
-    ("Java (Basic) Certificate - HackerRank", "2024", "https://www.hackerrank.com/certificates/afa9a9f6a485"),
-    ("Python (Basic) Certificate - HackerRank", "2024", "https://www.hackerrank.com/certificates/54665ee9596d"),
-    ("SQL (Basic) Certificate - HackerRank", "2024", "https://www.hackerrank.com/certificates/0d4c4ae63d0a")
+    ("Java (Basic) Certificate - HackerRank", "2025", "https://www.hackerrank.com/certificates/afa9a9f6a485"),
+    ("Python (Basic) Certificate - HackerRank", "2025", "https://www.hackerrank.com/certificates/54665ee9596d"),
+    ("SQL (Basic) Certificate - HackerRank", "2025", "https://www.hackerrank.com/certificates/0d4c4ae63d0a")
 ]
 
 for cert, year, link in certifications:
@@ -920,6 +920,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 
 st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
