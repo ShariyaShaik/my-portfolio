@@ -589,7 +589,7 @@ st.markdown("""
   .hero-description { margin: 6px 0 16px; }
 
   /* 5) Slightly smaller image so row height is smaller */
-  .hero-image { width: 240px; height: 280px; }             /* was 400x400 */
+  .hero-image { width: 260px; height: 300px; }             /* was 400x400 */
 </style>
 """, unsafe_allow_html=True)
 
@@ -597,7 +597,7 @@ st.markdown("""
 <div id="about" class="main-content">
   <section class="hero-section">
     <div class="hero-image-container">
-      <img src="https://raw.githubusercontent.com/ShariyaShaik/portfolio/refs/heads/main/image.jpeg" alt="Shaik Shariya" class="hero-image">
+      <img src="https://raw.githubusercontent.com/ShariyaShaik/portfolio/refs/heads/main/shariya.png" alt="Shaik Shariya" class="hero-image">
     </div>
     <div class="hero-content">
       <h1 class="hero-title">Shaik Shariya</h1>
@@ -920,6 +920,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 
 st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
