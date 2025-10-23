@@ -901,7 +901,7 @@ st.markdown("""
 <div class="contact-container">
     <div class="contact-info">
         <p style="color: #e0e0e0; font-size: 1.2rem; margin-bottom: 30px; line-height: 1.8;">
-            I'm always open to discussing new opportunities, collaborations, or just having a chat about technology!
+            I'm always open to discuss new opportunities, collaborations, or just having a chat about technology!
         </p>
         <div class="contact-links">
             <a style="text-decoration:none" href="mailto:shaikshariya2825@gmail.com" class="contact-link">Email</a>
@@ -920,6 +920,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 
 st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
