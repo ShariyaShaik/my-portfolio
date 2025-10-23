@@ -21,12 +21,12 @@ themes = {
     'dark': {
         'bg_gradient': 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
         'nav_bg': 'rgba(26, 26, 46, 0.95)',
-        'text_primary': {current_theme['text_primary']}',
-        'text_secondary': {current_theme['text_secondary']}',
-        'text_muted': '{current_theme['text_muted']}',
-        'accent': '{current_theme['accent']}',
-        'card_bg': '{current_theme['card_bg']}',
-        'border': '{current_theme['border']}',
+        'text_primary': '#ffffff',
+        'text_secondary': '#e0e0e0',
+        'text_muted': '#b0b0b0',
+        'accent': '#00d4ff',
+        'card_bg': 'rgba(255, 255, 255, 0.05)',
+        'border': 'rgba(255, 255, 255, 0.1)',
     },
     'light': {
         'bg_gradient': 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
@@ -732,7 +732,7 @@ st.markdown("""
     <h3 class="card-title">B.Tech in Artificial Intelligence and Machine Learning</h3>
     <p class="card-subtitle">Mohan Babu University, Tirupati</p>
     <p class="card-date">2022 - 2026</p>
-    <p class="card-description" style="color: {current_theme['accent']}; font-size: 1.3rem; font-weight: 700; margin-top: 15px;">
+    <p class="card-description" style="color: #00d4ff; font-size: 1.3rem; font-weight: 700; margin-top: 15px;">
         CGPA: 9.74/10
     </p>
 </div>
@@ -740,7 +740,7 @@ st.markdown("""
     <h3 class="card-title">Intermediate in MPC</h3>
     <p class="card-subtitle">Sri Chaitanya Junior College, Tirupati</p>
     <p class="card-date">2020 - 2022</p>
-    <p class="card-description" style="color: {current_theme['accent']}; font-size: 1.3rem; font-weight: 700; margin-top: 15px;">
+    <p class="card-description" style="color: #00d4ff; font-size: 1.3rem; font-weight: 700; margin-top: 15px;">
         Marks: 978/1000
     </p>
 </div>
@@ -751,7 +751,7 @@ st.markdown("""
 st.markdown('<div id="experience" class="section">', unsafe_allow_html=True)
 st.markdown('<h2 class="section-heading">Experience</h2>', unsafe_allow_html=True)
 
-st.markdown("""
+st.markdown(f"""
 <div class="content-card">
     <h3 class="card-title">Java Full Stack Developer Intern</h3>
     <p class="card-subtitle">NETWORX</p>
@@ -791,7 +791,7 @@ st.markdown('<h2 class="section-heading">Projects</h2>', unsafe_allow_html=True)
 col1, col2 = st.columns(2)
 
 with col1:
-    st.markdown("""
+    st.markdown(f"""
     <div class="content-card">
         <h3 class="card-title">Banking System Simulator</h3>
         <p class="card-description">
@@ -834,7 +834,7 @@ with col1:
     """, unsafe_allow_html=True)
 
 with col2:
-    st.markdown("""
+    st.markdown(f"""
     <div class="content-card">
         <h3 class="card-title">Electricity Bill Management System</h3>
         <p class="card-description">
@@ -905,8 +905,7 @@ for idx, (category, skills) in enumerate(items):
         </div>
         """, unsafe_allow_html=True)
 
-st.markdown('<h3 style="color: {current_theme['accent']}; font-size: 2rem; margin-top: 60px; margin-bottom: 30px; text-align: center;">Soft Skills</h3>', unsafe_allow_html=True)
-
+st.markdown(f'<h3 style="color: {current_theme["accent"]}; font-size: 2rem; margin-top: 60px; margin-bottom: 30px; text-align: center;">Soft Skills</h3>', unsafe_allow_html=True)
 soft_skills = [
     "Strong Collaboration & Teamwork",
     "Adaptable in Dynamic Environments",
@@ -977,6 +976,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 
 st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
