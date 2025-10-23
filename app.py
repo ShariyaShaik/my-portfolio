@@ -4,7 +4,7 @@ from datetime import datetime
 
 # Page Configuration
 st.set_page_config(
-    page_title="Shaik Shariya | AI/ML Portfolio",
+    page_title="Shaik Shariya Portfolio",
     page_icon="",
     layout="wide",
     initial_sidebar_state="collapsed"
@@ -920,6 +920,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 
 st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
