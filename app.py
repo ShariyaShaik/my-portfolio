@@ -597,7 +597,7 @@ st.markdown("""
 <div id="about" class="main-content">
   <section class="hero-section">
     <div class="hero-image-container">
-      <img src="https://raw.githubusercontent.com/ShariyaShaik/portfolio/refs/heads/main/image.jpeg" class="zoom-image"alt="Shaik Shariya" class="hero-image">
+      <img src="https://raw.githubusercontent.com/ShariyaShaik/portfolio/refs/heads/main/image.jpeg" alt="Shaik Shariya" class="hero-image">
     </div>
     <div class="hero-content">
       <h1 class="hero-title">Shaik Shariya</h1>
@@ -920,6 +920,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 
 st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
