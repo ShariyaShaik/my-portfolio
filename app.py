@@ -4,12 +4,18 @@ from datetime import datetime
 
 # Page Configuration
 st.set_page_config(
-    page_title="Shaik Shariya | AI/ML Portfolio",
+    page_title="Shaik Shariya Portfolio",
     page_icon="",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
+# Initialize theme in session state
+if 'theme' not in st.session_state:
+    st.session_state.theme = 'dark'
 
+# Theme toggle function
+def toggle_theme():
+    st.session_state.theme = 'light' if st.session_state.theme == 'dark' else 'dark'
 # Custom CSS for stunning design with navigation
 st.markdown("""
 <style>
@@ -24,7 +30,59 @@ st.markdown("""
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     header {visibility: hidden;}
+    /* Light Theme Styles */
+    .light-theme .stApp {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+    }
     
+    .light-theme .nav-bar {
+        background: rgba(255, 255, 255, 0.95) !important;
+    }
+    
+    .light-theme .nav-logo,
+    .light-theme .hero-subtitle,
+    .light-theme .stat-number,
+    .light-theme .card-title,
+    .light-theme .skill-category-title {
+        color: #0066cc !important;
+    }
+    
+    .light-theme .hero-title,
+    .light-theme .section-heading,
+    .light-theme .card-subtitle,
+    .light-theme .cert-name {
+        color: #1a1a2e !important;
+    }
+    
+    .light-theme .nav-link,
+    .light-theme .hero-description,
+    .light-theme .stat-label,
+    .light-theme .card-description,
+    .light-theme ul,
+    .light-theme li {
+        color: #4a5568 !important;
+    }
+    
+    .light-theme .stat-card,
+    .light-theme .content-card,
+    .light-theme .skill-category,
+    .light-theme .contact-info,
+    .light-theme .cert-item {
+        background: rgba(255, 255, 255, 0.9) !important;
+        border-color: rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    .light-theme .cta-button,
+    .light-theme .contact-link {
+        color: #0066cc !important;
+        border-color: #0066cc !important;
+    }
+    
+    .light-theme .cta-button:hover,
+    .light-theme .contact-link:hover {
+        background: #0066cc !important;
+        color: white !important;
+    }
     /* Smooth Scrolling */
     html {
         scroll-behavior: smooth;
@@ -527,7 +585,13 @@ function scrollToSection(sectionId) {
         window.scrollTo({top: y, behavior: 'smooth'});
     }
 }
-
+# Apply theme class dynamically
+st.markdown(f"""
+<script>
+    document.querySelector('.stApp').classList.remove('light-theme', 'dark-theme');
+    document.querySelector('.stApp').classList.add('{st.session_state.theme}-theme');
+</script>
+""", unsafe_allow_html=True)
 </script>
 
 """, unsafe_allow_html=True)
@@ -551,22 +615,27 @@ h1, h2, h3 { margin-top: 0.4rem; margin-bottom: 0.4rem; }
 """, unsafe_allow_html=True)
 
 
-st.markdown("""
+st.markdown(f"""
 <div class="nav-bar">
     <div class="nav-container">
         <div class="nav-logo">SHAIK SHARIYA</div>
         <div class="nav-links">
-            <a class="nav-link" style="text-decoration:none;color:pink;" href="#about" onclick="scrollToSection('about'); return false;">About</a>
-            <a class="nav-link" style="text-decoration:none;color:pink;" href="#education" onclick="scrollToSection('education'); return false;">Education</a>
-            <a class="nav-link" style="text-decoration:none;color:pink;" href="#experience" onclick="scrollToSection('experience'); return false;">Experience</a>
-            <a class="nav-link" style="text-decoration:none;color:pink;" href="#projects" onclick="scrollToSection('projects'); return false;">Projects</a>
-            <a class="nav-link" style="text-decoration:none;color:pink;" href="#skills" onclick="scrollToSection('skills'); return false;">Skills</a>
-            <a class="nav-link" style="text-decoration:none;color:pink;" href="#certifications" onclick="scrollToSection('certifications'); return false;">Certifications</a>
-            <a class="nav-link" style="text-decoration:none;color:pink;" href="#contact" onclick="scrollToSection('contact'); return false;">Contact</a>
+            <a class="nav-link" style="text-decoration:none;" href="#about" onclick="scrollToSection('about'); return false;">About</a>
+            <a class="nav-link" style="text-decoration:none;" href="#education" onclick="scrollToSection('education'); return false;">Education</a>
+            <a class="nav-link" style="text-decoration:none;" href="#experience" onclick="scrollToSection('experience'); return false;">Experience</a>
+            <a class="nav-link" style="text-decoration:none;" href="#projects" onclick="scrollToSection('projects'); return false;">Projects</a>
+            <a class="nav-link" style="text-decoration:none;" href="#skills" onclick="scrollToSection('skills'); return false;">Skills</a>
+            <a class="nav-link" style="text-decoration:none;" href="#certifications" onclick="scrollToSection('certifications'); return false;">Certifications</a>
+            <a class="nav-link" style="text-decoration:none;" href="#contact" onclick="scrollToSection('contact'); return false;">Contact</a>
         </div>
     </div>
 </div>
 """, unsafe_allow_html=True)
+
+# Theme button
+if st.button("🌓 Theme", key="theme_btn"):
+    toggle_theme()
+    st.rerun()
 
 st.markdown("""
 <style>
@@ -920,6 +989,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 
 st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
