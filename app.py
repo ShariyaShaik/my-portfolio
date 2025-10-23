@@ -4,11 +4,45 @@ from datetime import datetime
 
 # Page Configuration
 st.set_page_config(
-    page_title="Shaik Shariya | AI/ML Portfolio",
+    page_title="Shaik Shariya Portfolio",
     page_icon="",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
+# Initialize theme in session state
+if 'theme' not in st.session_state:
+    st.session_state.theme = 'dark'
+
+# Theme toggle function
+def toggle_theme():
+    st.session_state.theme = 'light' if st.session_state.theme == 'dark' else 'dark'
+# Define theme colors
+themes = {
+    'dark': {
+        'bg_gradient': 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+        'nav_bg': 'rgba(26, 26, 46, 0.95)',
+        'text_primary': {current_theme['text_primary']}',
+        'text_secondary': {current_theme['text_secondary']}',
+        'text_muted': '{current_theme['text_muted']}',
+        'accent': '{current_theme['accent']}',
+        'card_bg': '{current_theme['card_bg']}',
+        'border': '{current_theme['border']}',
+    },
+    'light': {
+        'bg_gradient': 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+        'nav_bg': 'rgba(255, 255, 255, 0.95)',
+        'text_primary': '#1a1a2e',
+        'text_secondary': '#2d3748',
+        'text_muted': '#4a5568',
+        'accent': '#0066cc',
+        'card_bg': 'rgba(255, 255, 255, 0.9)',
+        'border': 'rgba(0, 0, 0, 0.1)',
+    }
+}
+
+current_theme = themes[st.session_state.theme]
+
+
 
 # Custom CSS for stunning design with navigation
 st.markdown("""
@@ -31,10 +65,10 @@ st.markdown("""
     }
     
     /* Background */
-    .stApp {
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-        background-attachment: fixed;
-    }
+    .stApp {{
+    background: {current_theme['bg_gradient']};
+    background-attachment: fixed;
+}}
     
     /* Fixed Navigation Bar */
     .nav-bar {
@@ -42,11 +76,11 @@ st.markdown("""
         top: 0;
         left: 0;
         right: 0;
-        background: rgba(26, 26, 46, 0.95);
+        background: {current_theme['nav_bg']};
         backdrop-filter: blur(10px);
         padding: 20px 50px;
         z-index: 1000;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid {current_theme['border']};
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
     }
     
@@ -60,7 +94,7 @@ st.markdown("""
 .nav-logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #00d4ff;
+    color: {current_theme['accent']};
     letter-spacing: 1px;
     white-space: nowrap;
     flex-shrink: 0;
@@ -75,7 +109,7 @@ st.markdown("""
 
     
     .nav-link {
-        color: #e0e0e0;
+        color: {current_theme['text_secondary']};
         text-decoration: none;
         font-size: 1rem;
         font-weight: 500;
@@ -86,7 +120,7 @@ st.markdown("""
     }
     
     .nav-link:hover {
-        color: #00d4ff;
+        color: {current_theme['accent']};
         background: rgba(0, 212, 255, 0.1);
     }
     
@@ -124,7 +158,7 @@ st.markdown("""
         height: 400px;
         border-radius: 50%;
         object-fit: cover;
-        border: 5px solid #00d4ff;
+        border: 5px solid {current_theme['accent']};
         box-shadow: 0 20px 60px rgba(0, 212, 255, 0.4);
         transition: all 0.3s ease;
     }
@@ -151,7 +185,7 @@ st.markdown("""
     .hero-title {
         font-size: 5rem;
         font-weight: 800;
-        color: #ffffff;
+        color: {current_theme['text_primary']};
         margin-bottom: 20px;
         letter-spacing: -2px;
         animation: fadeInDown 1s ease;
@@ -159,7 +193,7 @@ st.markdown("""
     
     .hero-subtitle {
         font-size: 2rem;
-        color: #00d4ff;
+        color: {current_theme['accent']};
         margin-bottom: 20px;
         font-weight: 600;
         animation: fadeInUp 1s ease;
@@ -167,7 +201,7 @@ st.markdown("""
     
     .hero-description {
         font-size: 1.2rem;
-        color: #b0b0b0;
+        color: {current_theme['text_muted']};
         max-width: 800px;
         margin: 0 auto 40px;
         line-height: 1.8;
@@ -186,9 +220,9 @@ st.markdown("""
         display: inline-block;
         padding: 15px 35px;
         background: transparent;
-        color: #00d4ff;
+        color: {current_theme['accent']};
         text-decoration: none;
-        border: 2px solid #00d4ff;
+        border: 2px solid {current_theme['accent']};
         border-radius: 8px;
         font-weight: 600;
         font-size: 1rem;
@@ -196,28 +230,28 @@ st.markdown("""
     }
     
     .cta-button:hover {
-        background: #00d4ff;
+        background: {current_theme['accent']};
         color: #1a1a2e;
         transform: translateY(-2px);
         box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
     }
     
     .cta-button-primary {
-        background: #00d4ff;
+        background: {current_theme['accent']};
         color: #1a1a2e;
-        border: 2px solid #00d4ff;
+        border: 2px solid {current_theme['accent']};
     }
     
     .cta-button-primary:hover {
         background: transparent;
-        color: #00d4ff;
+        color: {current_theme['accent']};
     }
     
     /* Section Heading */
     .section-heading {
         font-size: 3rem;
         font-weight: 700;
-        color: #ffffff;
+        color: {current_theme['text_primary']};
         margin-bottom: 50px;
         text-align: center;
         position: relative;
@@ -232,7 +266,7 @@ st.markdown("""
         transform: translateX(-50%);
         width: 80px;
         height: 4px;
-        background: #00d4ff;
+        background: {current_theme['accent']};
         border-radius: 2px;
     }
     
@@ -245,9 +279,9 @@ st.markdown("""
     }
     
     .stat-card {
-        background: rgba(255, 255, 255, 0.05);
+        background: {current_theme['card_bg']};
         backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid {current_theme['border']};
         border-radius: 15px;
         padding: 40px 30px;
         text-align: center;
@@ -256,29 +290,43 @@ st.markdown("""
     
     .stat-card:hover {
         transform: translateY(-10px);
-        border-color: #00d4ff;
+        border-color: {current_theme['accent']};
         box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
     }
-    
+    .theme-toggle {{
+        background: {current_theme['accent']};
+        color: {current_theme['text_primary']};
+        border: 2px solid {current_theme['accent']};
+        padding: 8px 20px;
+        border-radius: 20px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }}
+
+.theme-toggle:hover {{
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+}}
     .stat-number {
         font-size: 3.5rem;
         font-weight: 800;
-        color: #00d4ff;
+        color: {current_theme['accent']};
         margin-bottom: 10px;
         line-height: 1;
     }
     
     .stat-label {
         font-size: 1.1rem;
-        color: #b0b0b0;
+        color: {current_theme['text_muted']};
         font-weight: 500;
     }
     
     /* Content Cards */
     .content-card {
-        background: rgba(255, 255, 255, 0.05);
+        background: {current_theme['card_bg']};
         backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid {current_theme['border']};
         border-radius: 15px;
         padding: 35px;
         margin-bottom: 30px;
@@ -287,20 +335,20 @@ st.markdown("""
     
     .content-card:hover {
         transform: translateY(-5px);
-        border-color: #00d4ff;
+        border-color: {current_theme['accent']};
         box-shadow: 0 10px 40px rgba(0, 212, 255, 0.15);
     }
     
     .card-title {
         font-size: 1.8rem;
-        color: #00d4ff;
+        color: {current_theme['accent']};
         font-weight: 700;
         margin-bottom: 12px;
     }
     
     .card-subtitle {
         font-size: 1.3rem;
-        color: #e0e0e0;
+        color:{current_theme['text_secondary']};
         margin-bottom: 8px;
         font-weight: 600;
     }
@@ -312,14 +360,14 @@ st.markdown("""
     }
     
     .card-description {
-        color: #b0b0b0;
+        color: {current_theme['text_muted']};
         line-height: 1.8;
         font-size: 1.05rem;
     }
     
     /* Lists */
     ul {
-        color: #b0b0b0;
+        color: {current_theme['text_muted']};
         line-height: 2;
         padding-left: 20px;
     }
@@ -337,22 +385,22 @@ st.markdown("""
     }
     
     .skill-category {
-        background: rgba(255, 255, 255, 0.05);
+        background: {current_theme['card_bg']};
         backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid {current_theme['border']};
         border-radius: 12px;
         padding: 25px;
         transition: all 0.3s ease;
     }
     
     .skill-category:hover {
-        border-color: #00d4ff;
+        border-color: {current_theme['accent']};
         transform: translateY(-3px);
     }
     
     .skill-category-title {
         font-size: 1.3rem;
-        color: #00d4ff;
+        color: {current_theme['accent']};
         font-weight: 600;
         margin-bottom: 15px;
     }
@@ -365,7 +413,7 @@ st.markdown("""
     
     .skill-tag {
         background: rgba(0, 212, 255, 0.1);
-        color: #00d4ff;
+        color: {current_theme['accent']};
         padding: 8px 16px;
         border-radius: 6px;
         font-size: 0.95rem;
@@ -376,7 +424,7 @@ st.markdown("""
     
     .skill-tag:hover {
         background: rgba(0, 212, 255, 0.2);
-        border-color: #00d4ff;
+        border-color: {current_theme['accent']};
         transform: scale(1.05);
     }
     
@@ -396,9 +444,9 @@ st.markdown("""
     }
     
     .contact-info {
-        background: rgba(255, 255, 255, 0.05);
+        background: {current_theme['card_bg']};
         backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid {current_theme['border']};
         border-radius: 15px;
         padding: 50px;
         margin-top: 40px;
@@ -416,25 +464,25 @@ st.markdown("""
         display: inline-block;
         padding: 12px 30px;
         background: transparent;
-        color: #00d4ff;
+        color: {current_theme['accent']};
         text-decoration: none;
-        border: 2px solid #00d4ff;
+        border: 2px solid {current_theme['accent']};
         border-radius: 8px;
         font-weight: 600;
         transition: all 0.3s ease;
     }
     
     .contact-link:hover {
-        background: #00d4ff;
+        background: {current_theme['accent']};
         color: #1a1a2e;
         transform: translateY(-2px);
     }
     
     /* Certifications */
     .cert-item {
-        background: rgba(255, 255, 255, 0.05);
+        background: {current_theme['card_bg']};
         backdrop-filter: blur(10px);
-        border-left: 4px solid #00d4ff;
+        border-left: 4px solid {current_theme['accent']};
         padding: 20px 25px;
         margin-bottom: 20px;
         border-radius: 8px;
@@ -448,14 +496,14 @@ st.markdown("""
     
     .cert-name {
         font-size: 1.2rem;
-        color: #e0e0e0;
+        color: {current_theme['text_secondary']};
         font-weight: 600;
         margin-bottom: 5px;
     }
     
     .cert-year {
         display: inline-block;
-        background: #00d4ff;
+        background: {current_theme['accent']};
         color: #1a1a2e;
         padding: 4px 12px;
         border-radius: 4px;
@@ -474,7 +522,7 @@ st.markdown("""
         padding: 25px 30px;
         border-radius: 10px;
         margin-bottom: 20px;
-        color: #e0e0e0;
+        color: {current_theme['text_secondary']};
         font-size: 1.15rem;
         font-weight: 500;
         transition: all 0.3s ease;
@@ -513,7 +561,7 @@ st.markdown("""
         text-align: center;
         padding: 40px 20px;
         color: #808080;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-top: 1px solid {current_theme['border']};
         margin-top: 80px;
     }
 </style>
@@ -551,22 +599,31 @@ h1, h2, h3 { margin-top: 0.4rem; margin-bottom: 0.4rem; }
 """, unsafe_allow_html=True)
 
 
-st.markdown("""
-<div class="nav-bar">
-    <div class="nav-container">
-        <div class="nav-logo">SHAIK SHARIYA</div>
-        <div class="nav-links">
-            <a class="nav-link" style="text-decoration:none;color:pink;" href="#about" onclick="scrollToSection('about'); return false;">About</a>
-            <a class="nav-link" style="text-decoration:none;color:pink;" href="#education" onclick="scrollToSection('education'); return false;">Education</a>
-            <a class="nav-link" style="text-decoration:none;color:pink;" href="#experience" onclick="scrollToSection('experience'); return false;">Experience</a>
-            <a class="nav-link" style="text-decoration:none;color:pink;" href="#projects" onclick="scrollToSection('projects'); return false;">Projects</a>
-            <a class="nav-link" style="text-decoration:none;color:pink;" href="#skills" onclick="scrollToSection('skills'); return false;">Skills</a>
-            <a class="nav-link" style="text-decoration:none;color:pink;" href="#certifications" onclick="scrollToSection('certifications'); return false;">Certifications</a>
-            <a class="nav-link" style="text-decoration:none;color:pink;" href="#contact" onclick="scrollToSection('contact'); return false;">Contact</a>
+# Create columns for navigation and theme button
+nav_col, button_col = st.columns([10, 1])
+
+with nav_col:
+    st.markdown(f"""
+    <div class="nav-bar">
+        <div class="nav-container">
+            <div class="nav-logo">SHAIK SHARIYA</div>
+            <div class="nav-links">
+                <a class="nav-link" style="text-decoration:none;" href="#about" onclick="scrollToSection('about'); return false;">About</a>
+                <a class="nav-link" style="text-decoration:none;" href="#education" onclick="scrollToSection('education'); return false;">Education</a>
+                <a class="nav-link" style="text-decoration:none;" href="#experience" onclick="scrollToSection('experience'); return false;">Experience</a>
+                <a class="nav-link" style="text-decoration:none;" href="#projects" onclick="scrollToSection('projects'); return false;">Projects</a>
+                <a class="nav-link" style="text-decoration:none;" href="#skills" onclick="scrollToSection('skills'); return false;">Skills</a>
+                <a class="nav-link" style="text-decoration:none;" href="#certifications" onclick="scrollToSection('certifications'); return false;">Certifications</a>
+                <a class="nav-link" style="text-decoration:none;" href="#contact" onclick="scrollToSection('contact'); return false;">Contact</a>
+            </div>
         </div>
     </div>
-</div>
-""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
+
+with button_col:
+    st.markdown("<div style='height: 80px;'></div>", unsafe_allow_html=True)
+    if st.button("🌓 Theme", on_click=toggle_theme, key="theme_toggle"):
+        st.rerun()
 
 st.markdown("""
 <style>
@@ -675,7 +732,7 @@ st.markdown("""
     <h3 class="card-title">B.Tech in Artificial Intelligence and Machine Learning</h3>
     <p class="card-subtitle">Mohan Babu University, Tirupati</p>
     <p class="card-date">2022 - 2026</p>
-    <p class="card-description" style="color: #00d4ff; font-size: 1.3rem; font-weight: 700; margin-top: 15px;">
+    <p class="card-description" style="color: {current_theme['accent']}; font-size: 1.3rem; font-weight: 700; margin-top: 15px;">
         CGPA: 9.74/10
     </p>
 </div>
@@ -683,7 +740,7 @@ st.markdown("""
     <h3 class="card-title">Intermediate in MPC</h3>
     <p class="card-subtitle">Sri Chaitanya Junior College, Tirupati</p>
     <p class="card-date">2020 - 2022</p>
-    <p class="card-description" style="color: #00d4ff; font-size: 1.3rem; font-weight: 700; margin-top: 15px;">
+    <p class="card-description" style="color: {current_theme['accent']}; font-size: 1.3rem; font-weight: 700; margin-top: 15px;">
         Marks: 978/1000
     </p>
 </div>
@@ -706,7 +763,7 @@ st.markdown("""
             <li>Designed front-end interface using HTML and CSS</li>
             <li>Enhanced skills in JDBC and database handling</li>
         </ul>
-        <a href="https://drive.google.com/file/d/10xDFC4LgZH4aTTQg5HHcfw4j_qIY08aV/view?usp=sharing" target="_blank" style="color: #00d4ff; text-decoration: none; font-weight: 600; margin-top: 10px; display: inline-block;">View Certificate →</a>
+        <a href="https://drive.google.com/file/d/10xDFC4LgZH4aTTQg5HHcfw4j_qIY08aV/view?usp=sharing" target="_blank" style="color: {current_theme['accent']}; text-decoration: none; font-weight: 600; margin-top: 10px; display: inline-block;">View Certificate →</a>
     </div>
 </div>
 <div class="content-card">
@@ -719,7 +776,7 @@ st.markdown("""
             <li>Experimented with ML models and learned model training based on specific requirements</li>
             <li>Enhanced skills in model evaluation, data pre-processing, and deployment strategies</li>
         </ul>
-        <a href="https://drive.google.com/file/d/1lB2__47Lx96UpDOvDrf6YZe2f0FUegX_/view" target="_blank" style="color: #00d4ff; text-decoration: none; font-weight: 600; margin-top: 10px; display: inline-block;">View Certificate →</a>
+        <a href="https://drive.google.com/file/d/1lB2__47Lx96UpDOvDrf6YZe2f0FUegX_/view" target="_blank" style="color: {current_theme['accent']}; text-decoration: none; font-weight: 600; margin-top: 10px; display: inline-block;">View Certificate →</a>
     </div>
 </div>
 
@@ -740,7 +797,7 @@ with col1:
         <p class="card-description">
             Comprehensive banking application built with Java, Spring Boot, and database integration for managing financial operations.
         </p>
-        <p style="color: #e0e0e0; font-weight: 600; margin: 20px 0 10px 0;">Key Features:</p>
+        <p style="color: {current_theme['text_secondary']}; font-weight: 600; margin: 20px 0 10px 0;">Key Features:</p>
         <ul>
             <li>Object-oriented programming with Java (OOP + DSA)</li>
             <li>JDBC and SQLite3 integration for data persistence</li>
@@ -753,7 +810,7 @@ with col1:
             <span class="skill-tag">JDBC</span>
             <span class="skill-tag">SQLite3</span>
         </div>
-        <a href="https://github.com/ShariyaShaik/Banking-system" target="_blank" style="color: #00d4ff; text-decoration: none; font-weight: 600; margin-top: 15px; display: inline-block;">View on GitHub →</a>
+        <a href="https://github.com/ShariyaShaik/Banking-system" target="_blank" style="color: {current_theme['accent']}; text-decoration: none; font-weight: 600; margin-top: 15px; display: inline-block;">View on GitHub →</a>
     </div>
     
     <div class="content-card">
@@ -761,7 +818,7 @@ with col1:
         <p class="card-description">
             Comprehensive educational system built on ServiceNow platform with complete administrative features.
         </p>
-        <p style="color: #e0e0e0; font-weight: 600; margin: 20px 0 10px 0;">Key Features:</p>
+        <p style="color: {current_theme['text_secondary']}; font-weight: 600; margin: 20px 0 10px 0;">Key Features:</p>
         <ul>
             <li>Business rules and client scripts implementation</li>
             <li>Flow designers for custom tables</li>
@@ -772,7 +829,7 @@ with col1:
             <span class="skill-tag">Flow Designer</span>
             <span class="skill-tag">Business Rules</span>
         </div>
-        <a href="" target="_blank" style="color: #00d4ff; text-decoration: none; font-weight: 600; margin-top: 15px; display: inline-block;">In Progress</a>
+        <a href="" target="_blank" style="color: {current_theme['accent']}; text-decoration: none; font-weight: 600; margin-top: 15px; display: inline-block;">In Progress</a>
     </div>
     """, unsafe_allow_html=True)
 
@@ -783,7 +840,7 @@ with col2:
         <p class="card-description">
             ServiceNow-based system for managing electricity bill operations with AI-powered virtual agent.
         </p>
-        <p style="color: #e0e0e0; font-weight: 600; margin: 20px 0 10px 0;">Key Features:</p>
+        <p style="color:{current_theme['text_secondary']}; font-weight: 600; margin: 20px 0 10px 0;">Key Features:</p>
         <ul>
             <li>Consumer and bill details management</li>
             <li>Receipt generation and tracking</li>
@@ -794,7 +851,7 @@ with col2:
             <span class="skill-tag">Virtual Agent</span>
             <span class="skill-tag">Integration</span>
         </div>
-        <a href="https://www.linkedin.com/posts/shariya-shaik-13677a268_servicenow-virtualagent-automation-activity-7370366782080999424-40di?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEGcDzoBwJGtScFFKVwyEfzazxRp9b-3ffA" target="_blank" style="color: #00d4ff; text-decoration: none; font-weight: 600; margin-top: 15px; display: inline-block;">View on LinkedIn →</a>
+        <a href="https://www.linkedin.com/posts/shariya-shaik-13677a268_servicenow-virtualagent-automation-activity-7370366782080999424-40di?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEGcDzoBwJGtScFFKVwyEfzazxRp9b-3ffA" target="_blank" style="color: {current_theme['accent']}; text-decoration: none; font-weight: 600; margin-top: 15px; display: inline-block;">View on LinkedIn →</a>
     </div>
     
     <div class="content-card">
@@ -802,7 +859,7 @@ with col2:
         <p class="card-description">
             GUI-based desktop application for cricket enthusiasts to create and manage fantasy teams.
         </p>
-        <p style="color: #e0e0e0; font-weight: 600; margin: 20px 0 10px 0;">Key Features:</p>
+        <p style="color: {current_theme['text_secondary']}; font-weight: 600; margin: 20px 0 10px 0;">Key Features:</p>
         <ul>
             <li>Interactive team creation interface</li>
             <li>Player addition/removal functionality</li>
@@ -814,7 +871,7 @@ with col2:
             <span class="skill-tag">Qt Designer</span>
             <span class="skill-tag">SQL</span>
         </div>
-        <a href="https://www.linkedin.com/posts/shariya-shaik-13677a268_excited-to-share-my-latest-project-a-fantasy-activity-7211810547988668416-audU?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEGcDzoBwJGtScFFKVwyEfzazxRp9b-3ffA" target="_blank" style="color: #00d4ff; text-decoration: none; font-weight: 600; margin-top: 15px; display: inline-block;">View on LinkedIn →</a>
+        <a href="https://www.linkedin.com/posts/shariya-shaik-13677a268_excited-to-share-my-latest-project-a-fantasy-activity-7211810547988668416-audU?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEGcDzoBwJGtScFFKVwyEfzazxRp9b-3ffA" target="_blank" style="color: {current_theme['accent']}; text-decoration: none; font-weight: 600; margin-top: 15px; display: inline-block;">View on LinkedIn →</a>
     </div>
     """, unsafe_allow_html=True)
 
@@ -848,7 +905,7 @@ for idx, (category, skills) in enumerate(items):
         </div>
         """, unsafe_allow_html=True)
 
-st.markdown('<h3 style="color: #00d4ff; font-size: 2rem; margin-top: 60px; margin-bottom: 30px; text-align: center;">Soft Skills</h3>', unsafe_allow_html=True)
+st.markdown('<h3 style="color: {current_theme['accent']}; font-size: 2rem; margin-top: 60px; margin-bottom: 30px; text-align: center;">Soft Skills</h3>', unsafe_allow_html=True)
 
 soft_skills = [
     "Strong Collaboration & Teamwork",
@@ -863,7 +920,7 @@ for idx, skill in enumerate(soft_skills):
     with cols[idx % 3]:
         st.markdown(f"""
         <div class="skill-category" style="text-align: center;">
-            <p style="color: #e0e0e0; font-size: 1.05rem; margin: 0;">{skill}</p>
+            <p style="color: {current_theme['text_secondary']}; font-size: 1.05rem; margin: 0;">{skill}</p>
         </div>
         """, unsafe_allow_html=True)
 
@@ -888,7 +945,7 @@ for cert, year, link in certifications:
     <div class="cert-item">
         <div class="cert-name">{cert}</div>
         <span class="cert-year">{year}</span>
-        <a href="{link}" target="_blank" style="color: #00d4ff; text-decoration: none; font-weight: 600; margin-left: 15px; display: inline-block;">View Certificate →</a>
+        <a href="{link}" target="_blank" style="color: {current_theme['accent']}; text-decoration: none; font-weight: 600; margin-left: 15px; display: inline-block;">View Certificate →</a>
     </div>
     """, unsafe_allow_html=True)
 
@@ -900,7 +957,7 @@ st.markdown('<h2 class="section-heading">Get In Touch</h2>', unsafe_allow_html=T
 st.markdown("""
 <div class="contact-container">
     <div class="contact-info">
-        <p style="color: #e0e0e0; font-size: 1.2rem; margin-bottom: 30px; line-height: 1.8;">
+        <p style="color:{current_theme['text_secondary']}; font-size: 1.2rem; margin-bottom: 30px; line-height: 1.8;">
             I'm always open to discussing new opportunities, collaborations, or just having a chat about technology!
         </p>
         <div class="contact-links">
@@ -920,6 +977,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 
 st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
