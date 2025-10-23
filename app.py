@@ -585,13 +585,7 @@ function scrollToSection(sectionId) {
         window.scrollTo({top: y, behavior: 'smooth'});
     }
 }
-# Apply theme class dynamically
-st.markdown(f"""
-<script>
-    document.querySelector('.stApp').classList.remove('light-theme', 'dark-theme');
-    document.querySelector('.stApp').classList.add('{st.session_state.theme}-theme');
-</script>
-""", unsafe_allow_html=True)
+
 </script>
 
 """, unsafe_allow_html=True)
@@ -613,7 +607,13 @@ st.markdown("""
 h1, h2, h3 { margin-top: 0.4rem; margin-bottom: 0.4rem; }
 </style>
 """, unsafe_allow_html=True)
-
+# Apply theme class dynamically
+st.markdown(f"""
+<script>
+    document.querySelector('.stApp').classList.remove('light-theme', 'dark-theme');
+    document.querySelector('.stApp').classList.add('{st.session_state.theme}-theme');
+</script>
+""", unsafe_allow_html=True)
 
 st.markdown(f"""
 <div class="nav-bar">
@@ -989,6 +989,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 
 st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
