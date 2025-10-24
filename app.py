@@ -629,7 +629,7 @@ col1, col2, col3, col4 = st.columns(4)
 with col1:
     st.markdown("""
     <div class="stat-card">
-        <div class="stat-number">9.74</div>
+        <div class="stat-number">9.71</div>
         <div class="stat-label">CGPA</div>
     </div>
     """, unsafe_allow_html=True)
@@ -920,6 +920,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 
 st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
