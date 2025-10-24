@@ -676,7 +676,7 @@ st.markdown("""
     <p class="card-subtitle">Mohan Babu University, Tirupati</p>
     <p class="card-date">2022 - 2026</p>
     <p class="card-description" style="color: #00d4ff; font-size: 1.3rem; font-weight: 700; margin-top: 15px;">
-        CGPA: 9.74/10
+        CGPA: 9.71/10
     </p>
 </div>
 <div class="content-card">
@@ -920,6 +920,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 
 st.markdown('</div>', unsafe_allow_html=True)
+
 
 
 
